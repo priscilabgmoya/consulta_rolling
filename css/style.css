@@ -1,0 +1,26 @@
+*{
+    padding: 0px;
+    color: #f8f9fa;
+}
+body{
+    background-color: #27293d;
+}
+main{
+    flex-grow: 1;
+}
+.card{
+    background-color: #f8f9fa;
+}
+
+table,td,th {
+	border: 1px solid black;
+    background-color: #f8f9fa;
+    color: black;
+}
+/*tbody tr:nth-child(even) {
+    background-color: #eee;
+    }
+
+ tbody tr:nth-child(odd) {
+    background-color:#fadddd;
+}*/
