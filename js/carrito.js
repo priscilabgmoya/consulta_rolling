@@ -1,4 +1,4 @@
-
+let products =   localStorage.getItem("listProduct") ? JSON.parse(localStorage.getItem("listProduct")) : [];
 let carrito = [];
 
 products.forEach(product => {
@@ -10,7 +10,7 @@ products.forEach(product => {
     newProductCard.style.width = '18rem'
     // posible solucion - creamos el body de la card 
     let newProductBody = document.createElement('div');
-    newProductBody.classList.add('card-body');
+    newProductBody.classList.add('card-body','productoCard');
 
     //creamos la imagen 
     let imgProduct = document.createElement("img");
@@ -19,24 +19,24 @@ products.forEach(product => {
 
     // creamos el titulo
     let titleProduct = document.createElement("h5");
-    titleProduct.classList.add("card-title");
+    titleProduct.classList.add("card-title", "text-black");
     titleProduct.innerText = product.name;
 
     //creamos el texto
     let textProduct = document.createElement("p");
-    textProduct.classList.add("card-text");
+    textProduct.classList.add("card-text", "text-black");
     textProduct.innerText = '$' + product.price + `\n Descripcion: ${product.description}`;
 
     // creamos el boton
-    let btnComprar = document.createElement("button");
-    btnComprar.classList.add("btn", "btn-primary");
-    btnComprar.innerText = "Agregar al carrito";
-    btnComprar.type = "button";
-    btnComprar.id = "btnComprarProducto";
+    let btnAgregarCarrito = document.createElement("button");
+    btnAgregarCarrito.classList.add("btn", "btn-primary");
+    btnAgregarCarrito.innerText = "Agregar al carrito";
+    btnAgregarCarrito.type = "button";
+    btnAgregarCarrito.id = "btnComprarProducto";
     
 
     // agregamos la funcionalidad de que escuche los click sobre el boton 
-    btnComprar.addEventListener("click", () => {
+    btnAgregarCarrito.addEventListener("click", () => {
         agregarCarrito(product.id);
     });
 
@@ -44,7 +44,7 @@ products.forEach(product => {
     newProductBody.appendChild(imgProduct);
     newProductBody.appendChild(titleProduct);
     newProductBody.appendChild(textProduct);
-    newProductBody.appendChild(btnComprar);
+    newProductBody.appendChild(btnAgregarCarrito);
 
     // agregamos el body al padre card 
     newProductCard.appendChild(newProductBody);
@@ -129,6 +129,7 @@ let suma =0;
         btnModificar.id = "btnModificarProducto";
         newProductColumn.appendChild(btnModificar);
         newProductRow.appendChild(newProductColumn); 
+
         // agregamos la funcionalidad de que escuche los click sobre el boton 
         btnEliminar.addEventListener("click", () => {
             eliminarProducto(productCard[0].id);
